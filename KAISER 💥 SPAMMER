@@ -66,3 +66,25 @@ tab:CreateToggle({
        end)
    end,
 })
+
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+-- Brookhaven Name & Bio Auto-Updater with Colors
+task.spawn(function()
+    local playerGui = LocalPlayer:WaitForChild("PlayerGui", 10)
+    if playerGui then
+        -- Formatted with Yellow name and Blue bio HTML tags
+        local customName = '<font color="yellow">💥ʟᴏʀᴅ_ᴋᴀɪsᴇʀ_ᴠ1💥</font>'
+        local customBio = '<font color="#00aaff">Welcome ' .. LocalPlayer.Name .. ". ᘜ尺卂几ᗪ Ҝ卂|丂乇尺 ᴏɴ Tᴏᴘ 🤗🔥</font>"
+
+        -- Fire Brookhaven RP Remote Events
+        local RPNameEvent = game:GetService("ReplicatedStorage"):FindFirstChild("RE", true) 
+            and game:GetService("ReplicatedStorage").RE:FindFirstChild("1RPName1")
+            
+        if RPNameEvent then
+            RPNameEvent:FireServer("RolePlayName", customName)
+            RPNameEvent:FireServer("RolePlayBio", customBio)
+        end
+    end
+end)
