@@ -1,0 +1,68 @@
+local Rayfield = loadstring(game:HttpGet("https://sirius.menu/gen2"))()
+
+local window = Rayfield:CreateWindow({
+    name = "KAISER VERSION1",
+    subtitle = "Kaiser Gen2",
+})
+
+local tab = window:CreateTab({ name = "Main Features", icon = 93364949241311 })
+
+tab:CreateButton({
+    name = "Teleport to Safe Zone",
+    callback = function()
+        window:Notify({ title = "Teleported!", content = "Successfully moved to safe area." })
+    end,
+})
+
+tab:CreateToggle({
+    name = "Hoverboard RGB",
+    callback = function(value)
+        print("Hoverboard RGB:", value)
+    end,
+})
+
+tab:CreateInput({
+   name = "Target Player",
+   placeholderText = "Type username here...",
+   removeTextOnFocus = false,
+   callback = function(text)
+       _G.TargetPlayer = text
+   end,
+})
+
+tab:CreateToggle({
+   name = "KAISER SPAMMER",
+   callback = function(value)
+       _G.LoopMessages = value
+
+       task.spawn(function()
+           while _G.LoopMessages do
+               local TextChatService = game:GetService("TextChatService")
+               local ReplicatedStorage = game:GetService("ReplicatedStorage")
+               
+               local target = (_G.TargetPlayer and _G.TargetPlayer ~= "") and _G.TargetPlayer or "KAISER H8RS"
+
+               local messages = {
+                   target .. " TMKX MEH DARK POWER POWER VOID WORM WAVE FUN FACT WAVE PRIME PARALLEL PRIME",
+                   target .. " TMKX МЕН PARALLEL DARK POWER HYPER POWER WAVE PRIME FUN FACT GODZILLA HYPER",
+                   target .. " TMKX MEH VOID WORM PARALLEL FRAUD WAVE HYPER VOID GODZILLA WAVE WAVE",
+                   target .. " TMKX MEH VOID WORM PARALLEL FRAUD WAVE HYPER VOID GODZILLA WAVE WAVE."
+               }
+
+               for _, msg in ipairs(messages) do
+                   if not _G.LoopMessages then break end
+                   
+                   if TextChatService.ChatVersion == Enum.ChatVersion.TextChatService then
+                       TextChatService.TextChannels.RBXGeneral:SendAsync(msg)
+                   else
+                       ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg, "All")
+                   end
+
+                   task.wait(2)
+               end
+
+               task.wait(3)
+           end
+       end)
+   end,
+})
