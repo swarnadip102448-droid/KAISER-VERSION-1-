@@ -40,13 +40,13 @@ tab:CreateToggle({
                local TextChatService = game:GetService("TextChatService")
                local ReplicatedStorage = game:GetService("ReplicatedStorage")
                
-               local target = (_G.TargetPlayer and _G.TargetPlayer ~= "") and _G.TargetPlayer or "KAISER H8RS"
+               local target = (_G.TargetPlayer and _G.TargetPlayer ~= "") and _G.TargetPlayer or "❤️KAISER❤️ H8RS(😝)"
 
                local messages = {
-                   target .. " TMKX MEH DARK POWER POWER VOID WORM WAVE FUN FACT WAVE PRIME PARALLEL PRIME",
-                   target .. " TMKX МЕН PARALLEL DARK POWER HYPER POWER WAVE PRIME FUN FACT GODZILLA HYPER",
-                   target .. " TMKX MEH VOID WORM PARALLEL FRAUD WAVE HYPER VOID GODZILLA WAVE WAVE",
-                   target .. " TMKX MEH VOID WORM PARALLEL FRAUD WAVE HYPER VOID GODZILLA WAVE WAVE."
+                   target .. " TMKX MEH DARK POWER KAISER VOID WORM WAVE GOD FACT WAVE PRIME PARALLEL PRIME(🤣)@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
+                   target .. " TMKX МЕН PARALLEL DARK KAISER HYPER POWER WAVE PRIME KAISER FACT GODZILLA HYPER(😹)@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
+                   target .. " TMKX MEH KAISER WORM PARALLEL GOD WAVE HYPER VOID KAISER WAVE WAVE(😝)@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
+                   target .. " TMKX MEH KAISER WORM PARALLEL LEGEND WAVE HYPER VOID KAISR WAVE POWER(💥)@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
                }
 
                for _, msg in ipairs(messages) do
@@ -67,24 +67,3 @@ tab:CreateToggle({
    end,
 })
 
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-
--- Brookhaven Name & Bio Auto-Updater with Colors
-task.spawn(function()
-    local playerGui = LocalPlayer:WaitForChild("PlayerGui", 10)
-    if playerGui then
-        -- Formatted with Yellow name and Blue bio HTML tags
-        local customName = '<font color="yellow">💥ʟᴏʀᴅ_ᴋᴀɪsᴇʀ_ᴠ1💥</font>'
-        local customBio = '<font color="#00aaff">Welcome ' .. LocalPlayer.Name .. ". ᘜ尺卂几ᗪ Ҝ卂|丂乇尺 ᴏɴ Tᴏᴘ 🤗🔥</font>"
-
-        -- Fire Brookhaven RP Remote Events
-        local RPNameEvent = game:GetService("ReplicatedStorage"):FindFirstChild("RE", true) 
-            and game:GetService("ReplicatedStorage").RE:FindFirstChild("1RPName1")
-            
-        if RPNameEvent then
-            RPNameEvent:FireServer("RolePlayName", customName)
-            RPNameEvent:FireServer("RolePlayBio", customBio)
-        end
-    end
-end)
